@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Offline Sync TEST</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SyncTEST">
+  <meta name="theme-color" content="#8a5a00">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="update-banner" hidden>Update available, tap to refresh</button>
+  <div id="session-banner" class="banner" hidden></div>
+  <div id="toast" class="banner ok" hidden></div>
+
+  <header>
+    <h1>Offline Sync TEST <small id="version">v?</small></h1>
+    <p class="muted">Throwaway test app. Test data only.</p>
+  </header>
+
+  <section id="login" hidden>
+    <h2>Sign in</h2>
+    <form id="login-form">
+      <label>Email <input name="email" type="email" autocomplete="username" required></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Sign in</button>
+      <button type="button" id="skip-login" class="secondary">Use offline without signing in</button>
+      <p id="login-error" class="error"></p>
+    </form>
+  </section>
+
+  <main id="main" hidden>
+    <section>
+      <div class="row">
+        <button id="new-record">New TEST record</button>
+        <button id="sync-now" class="secondary">Sync now</button>
+      </div>
+      <p id="counts" class="muted"></p>
+      <ul id="records"></ul>
+    </section>
+
+    <details open>
+      <summary>Diagnostics</summary>
+      <dl id="diagnostics"></dl>
+      <div class="row">
+        <button id="persist" class="secondary">Call storage.persist()</button>
+        <button id="sign-in-again" class="secondary" hidden>Sign in</button>
+        <button id="sign-out" class="secondary" hidden>Sign out (keeps local records)</button>
+      </div>
+    </details>
+
+    <details>
+      <summary>Test log</summary>
+      <ol id="log" reversed></ol>
+    </details>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
